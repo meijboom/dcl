@@ -9,6 +9,12 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ComponentsComponent } from './dashboard/components/components.component';
+import { CreateComponentComponent } from './dashboard/create-component/create-component.component';
+import { ShowComponentComponent } from './dashboard/show-component/show-component.component';
+import { EditComponentComponent } from './dashboard/edit-component/edit-component.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +22,13 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    DashboardComponent,
+    SidebarComponent,
+    ComponentsComponent,
+    CreateComponentComponent,
+    ShowComponentComponent,
+    EditComponentComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -26,6 +38,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'dashboard', component: DashboardComponent },
     ])
   ],
   providers: [],
