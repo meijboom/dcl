@@ -2,12 +2,10 @@
   <div class="row justify-content-center">
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2 text-center" 
     *ngFor="let componentData of componentsData">
-          <div class="card text-center">
-              <p class="picdemo">foto hier</p>
-              <a class="card-link" href="#">
-                <button class="btn btn-primary">Show {{ componentData.title }}</button>
-              </a>
-            </div>
-          </div>
+
+      <!-- push componentData in app-videocompo and set it to videoCompo -->
+      <app-videocompo [videoCompo]="componentData"></app-videocompo>
+      
+    </div>
   </div>
 </main>

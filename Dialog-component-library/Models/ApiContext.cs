@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 
-
-
 namespace Dialog_component_library.Models
 {
     public class ApiContext : DbContext 

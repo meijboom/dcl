@@ -68,6 +68,10 @@ namespace Dialog_component_library
                 if (env.IsDevelopment())
                 {
                     spa.UseAngularCliServer(npmScript: "start");
+
+                    // run angular in a separate instance, so angular does not have to restart each build.
+                    // use this \/
+                    // spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
             });
         }

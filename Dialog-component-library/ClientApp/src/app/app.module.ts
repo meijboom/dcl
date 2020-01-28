@@ -15,6 +15,7 @@ import { ComponentsComponent } from './dashboard/components/components.component
 import { CreateComponentComponent } from './dashboard/create-component/create-component.component';
 import { ShowComponentComponent } from './dashboard/show-component/show-component.component';
 import { EditComponentComponent } from './dashboard/edit-component/edit-component.component';
+import { VideocompoComponent } from './dashboard/components/videocompo/videocompo.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { EditComponentComponent } from './dashboard/edit-component/edit-componen
     CreateComponentComponent,
     ShowComponentComponent,
     EditComponentComponent,
+    VideocompoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
