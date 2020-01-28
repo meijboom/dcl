@@ -28,7 +28,7 @@ import { EditComponentComponent } from './dashboard/edit-component/edit-componen
     ComponentsComponent,
     CreateComponentComponent,
     ShowComponentComponent,
-    EditComponentComponent
+    EditComponentComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
