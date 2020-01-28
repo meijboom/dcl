@@ -1,1 +1,58 @@
-<p>edit-component works!</p>
+<!-- add snippets to the database -->
+<div class="container">
+    <div class="row">
+        <form class="col-12" action="route('components.store')" method="POST">
+              <h4>Edit an existing component</h4>
+<!-- title -->
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                      Title</span>
+                  </div>
+                  <input type="text" name="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+<!-- category -->
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                      Category</span>
+                  </div>
+                  <input type="text" name="category" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+<!-- Company -->
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">
+                      Company</span>
+                  </div>
+                  <input type="text" name="company" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                </div>
+<!-- HTML txtarea -->
+                  <div class="input-group">   
+                      <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        HTML</span>
+                      </div>
+                      <textarea name="html_Content" class="form-control" aria-label="HTML snippet"></textarea>
+                  </div>
+<!-- CSS txtarea -->
+                  <div class="input-group">   
+                      <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        CSS</span>
+                      </div>
+                      <textarea name="css_Content" class="form-control" aria-label="HTML snippet"></textarea>
+                  </div>
+<!-- JS txtarea -->
+                  <div class="input-group">   
+                      <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        Javascript</span>
+                      </div>
+                      <textarea name="js_Content" class="form-control" aria-label="HTML snippet"></textarea>
+                  </div>
+              <Button class="btn btn-primary" type="submit">
+                Submit</Button>
+          </form>
+      </div>
+    </div>

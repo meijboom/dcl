@@ -1,0 +1,55 @@
+@import "../../assets/scss/variables";
+.sidebar {    
+    display: flex;
+    height: 100%;
+    letter-spacing: 2px;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+    overflow-x: hidden;
+    background-color: $dg-main-color;
+    .component-nav {
+        height: 100%;
+        width: 230px;
+        list-style: none;
+        color: $gray-500;
+
+        h3 {
+            margin: 10px 0px;
+            color: orange;
+            line-height: 2em;
+            border-bottom: 2px solid orange;
+        }
+        li a {
+            color: $gray-500;
+            text-decoration: none;
+            &:hover{
+                color: orange;
+            }
+        }
+    }
+
+    .companyswitcher {
+        list-style: none;
+        background-color: orange;
+        text-align: end;
+        margin-bottom: 0;
+        // top right bottom left
+        padding: 20px 15px 20px 0;
+        h4 {
+            color: $dg-light-color;
+            text-align: start;
+            line-height: 2em;
+            padding: 0 0 0 15px;
+            border-bottom: 2px solid $dg-light-color;
+        }
+        li a {
+            color: $gray-700;
+            text-decoration: none;
+            &:hover{
+                color: $dg-light-color;
+            }
+        }
+    }
+}
