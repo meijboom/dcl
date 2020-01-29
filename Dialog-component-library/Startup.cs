@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,6 +11,7 @@ namespace Dialog_component_library
 {
     public class Startup
     {
+        private string _connectionString = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -20,7 +22,16 @@ namespace Dialog_component_library
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            _connectionString = Configuration["secretConnectionString"];
+
             services.AddControllersWithViews();
+
+            services.AddEntityFrameworkNpgsql()
+            .AddDbContext<Models.ApiContext>(
+                opt => opt.UseNpgsql(_connectionString));
+
+            services.AddTransient<DataSeed>();
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -29,7 +40,7 @@ namespace Dialog_component_library
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DataSeed seed)
         {
             if (env.IsDevelopment())
             {
@@ -41,6 +52,7 @@ namespace Dialog_component_library
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            seed.SeedData(20);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -57,6 +69,7 @@ namespace Dialog_component_library
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
             });
+
 
             app.UseSpa(spa =>
             {
