@@ -20,8 +20,8 @@ namespace Dialog_component_library
             if (!_ctx.Components.Any())
             {
                 SeedComponents(nComponents);
+                _ctx.SaveChanges();
             }
-            _ctx.SaveChanges();
         }
 
         private void SeedComponents(int n)
@@ -41,6 +41,7 @@ namespace Dialog_component_library
             {
                 var companyname = Helpers.MakeComponentCompany();
                 var compCategory = Helpers.MakeComponentCategory();
+                var compTitle = companyname + compCategory;
                 var compPicture = compCategory + "-Picture" ;
                 var compHtmlContent = compCategory + "-html";
                 var compCssContent = compCategory + "-css";
@@ -52,6 +53,7 @@ namespace Dialog_component_library
                     Id = i,
                     Picture = compPicture,
                     Company = companyname,
+                    Title = compTitle,
                     Category = compCategory,
                     HtmlContent = compHtmlContent,
                     CssContent = compCssContent,
