@@ -47,18 +47,71 @@ namespace Dialog_component_library.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
+                    b.Property<int>("UserForeignKey")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("created_at")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime?>("updated_at")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<int>("user_id")
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserForeignKey");
+
+                    b.ToTable("Components");
+                });
+
+            modelBuilder.Entity("Dialog_component_library.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<bool>("AdminRights")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Company")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("ComponentId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("created_at")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<DateTime?>("updated_at")
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Components");
+                    b.HasIndex("ComponentId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Dialog_component_library.Models.Component", b =>
+                {
+                    b.HasOne("Dialog_component_library.Models.User", "User")
+                        .WithMany("Components")
+                        .HasForeignKey("UserForeignKey")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Dialog_component_library.Models.User", b =>
+                {
+                    b.HasOne("Dialog_component_library.Models.Component", "Component")
+                        .WithMany()
+                        .HasForeignKey("ComponentId");
                 });
 #pragma warning restore 612, 618
         }

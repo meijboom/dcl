@@ -14,6 +14,8 @@ namespace Dialog_component_library.Models
         public string JsContent {get; set;}
         public DateTime created_at { get; set; }
         public DateTime? updated_at { get; set; }
-        public int user_id { get; set; }
+
+        public int UserForeignKey { get; set; }
+        public virtual User User { get; set; }
     }
 }

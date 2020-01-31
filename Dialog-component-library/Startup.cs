@@ -24,6 +24,14 @@ namespace Dialog_component_library
         {
             _connectionString = Configuration["secretConnectionString"];
 
+            // ADD AUTHENTICATION
+            services.AddAuthentication("CookieAuth")
+            .AddCookie("cookieAuth", config =>
+            {
+                config.Cookie.Name = "Omas.Cookie";
+                config.LoginPath = "/Login";
+            });
+            
             services.AddControllersWithViews();
 
             services.AddEntityFrameworkNpgsql()
@@ -52,7 +60,7 @@ namespace Dialog_component_library
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            seed.SeedData(20);
+            seed.SeedData(100);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -63,11 +71,14 @@ namespace Dialog_component_library
 
             app.UseRouting();
 
+            // app.UseAuthentication();
+
             app.UseEndpoints(endpoints =>
             {
+                // URL pattern
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+                    pattern: "api/{controller}/{action=Index}/{id?}");
             });
 
 
