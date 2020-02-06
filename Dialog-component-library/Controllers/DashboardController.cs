@@ -15,54 +15,6 @@ namespace Dialog_component_library.Controllers
         {
             _ctx = ctx;
         }
-
-
-        // [HttpGet("ByUser", Name="MyComponents")]
-        // public IActionResult ByUser()
-        // {
-        //     var companies = _ctx.Components.Include(o => o.User.Id).ToList();
-
-        //     var groupedResult = companies.GroupBy(o => o.Category)
-        //     .ToList()
-        //     .Select(grp => new {
-        //         State = grp.Key,
-        //         Total = grp.Sum(x => x.Total)
-        //         }).OrderByDescending( res  => res.Total)
-        //         .ToList();
-            
-        //     return Ok(groupedResult);
-        // }
-
-        // [HttpGet("ByCompany")]
-        // public IActionResult ByCompany()
-        // {
-        //     var companies = _ctx.Components.Include(o => o.Company).ToList();
-
-        //     var groupedResult = companies.GroupBy(o => o.Company)
-        //     .ToList()
-        //     .Select(grp => new {
-        //         State = grp.Key,
-        //         Total = grp.Sum(x => x.Total)
-        //         }).OrderByDescending( res  => res.Total)
-        //         .ToList();
-            
-        //     return Ok(groupedResult);
-        // }
-
-        // [HttpGet("ByCategory", Name="ByCategory")]
-        // public IActionResult ByCategory()
-        // {
-        //     var companies = _ctx.Components.Include(o => o.Category).ToList();
-
-        //     var groupedResult = companies.GroupBy(o => o.Category)
-        //     .ToList()
-        //     .Select(grp => new {
-        //         State = grp.Key,
-        //         Total = grp.Sum(x => x.Total)
-        //         }).OrderByDescending( res  => res.Total)
-        //         .ToList();
-
-        //     return (groupedResult);
-        // }
+    
     }
 }

@@ -22,13 +22,18 @@ namespace Dialog_component_library
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors(opt =>  {
+                opt.AddPolicy("CorsPolicy",
+                c => c.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            })
             _connectionString = Configuration["secretConnectionString"];
 
             // ADD AUTHENTICATION
             services.AddAuthentication("CookieAuth")
             .AddCookie("cookieAuth", config =>
             {
-                config.Cookie.Name = "Omas.Cookie";
+                config.Cookie.Name = "Dcl.Cookie";
                 config.LoginPath = "/Login";
             });
             
@@ -53,6 +58,7 @@ namespace Dialog_component_library
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors("CorsPolicy");
             }
             else
             {
@@ -71,7 +77,11 @@ namespace Dialog_component_library
 
             app.UseRouting();
 
-            // app.UseAuthentication();
+            //  who are you?
+            app.UseAuthentication();
+            //  are you allowed?
+            app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {

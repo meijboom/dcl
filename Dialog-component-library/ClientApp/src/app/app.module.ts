@@ -12,10 +12,15 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ComponentsComponent } from './dashboard/components/components.component';
-import { CreateComponentComponent } from './dashboard/create-component/create-component.component';
-import { ShowComponentComponent } from './dashboard/show-component/show-component.component';
-import { EditComponentComponent } from './dashboard/edit-component/edit-component.component';
+import { CreateComponentComponent } from './dashboard/components/create-component/create-component.component';
+import { ShowComponentComponent } from './dashboard/components/show-component/show-component.component';
+import { EditComponentComponent } from './dashboard/components/edit-component/edit-component.component';
 import { VideocompoComponent } from './dashboard/components/videocompo/videocompo.component';
+import { PaginationComponent } from './dashboard/components/pagination/pagination.component';
+
+
+// Services
+import { ServerService } from '../services/server.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,8 @@ import { VideocompoComponent } from './dashboard/components/videocompo/videocomp
     CreateComponentComponent,
     ShowComponentComponent,
     EditComponentComponent,
-    VideocompoComponent
+    VideocompoComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -43,7 +49,9 @@ import { VideocompoComponent } from './dashboard/components/videocompo/videocomp
       { path: 'dashboard', component: DashboardComponent },
     ])
   ],
-  providers: [],
+  providers: [
+      ServerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

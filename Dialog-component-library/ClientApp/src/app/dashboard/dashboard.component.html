@@ -5,6 +5,17 @@
         </div>
         <div class="col-9">
             <app-components></app-components>
+
+            <!-- listens to goPrev and executes the goToPrevious -->
+            <app-pagination
+                (goPage)="goToPage($event)"
+                (goPrev)="goToPrevious()"
+                (goNext)="goToNext()"
+                [page]="page"
+                [perPage]="limit"
+                [count]="total"
+                >
+            </app-pagination>
         </div>
     </div>
 </main>
