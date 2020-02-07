@@ -15,12 +15,10 @@ import { ComponentsComponent } from './dashboard/components/components.component
 import { CreateComponentComponent } from './dashboard/components/create-component/create-component.component';
 import { ShowComponentComponent } from './dashboard/components/show-component/show-component.component';
 import { EditComponentComponent } from './dashboard/components/edit-component/edit-component.component';
-import { VideocompoComponent } from './dashboard/components/videocompo/videocompo.component';
 import { PaginationComponent } from './dashboard/components/pagination/pagination.component';
 
-
 // Services
-import { ServerService } from '../services/server.service';
+import { ComponentDataService } from 'src/services/component-data.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +33,6 @@ import { ServerService } from '../services/server.service';
     CreateComponentComponent,
     ShowComponentComponent,
     EditComponentComponent,
-    VideocompoComponent,
     PaginationComponent
   ],
   imports: [
@@ -50,7 +47,7 @@ import { ServerService } from '../services/server.service';
     ])
   ],
   providers: [
-      ServerService
+      ComponentDataService
   ],
   bootstrap: [AppComponent]
 })

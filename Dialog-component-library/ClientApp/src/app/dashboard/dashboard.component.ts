@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { ComponentDataTS } from 'src/models/component.model';
 import { ComponentDataService } from 'src/services/component-data.service';
 
 @Component({
@@ -8,33 +9,35 @@ import { ComponentDataService } from 'src/services/component-data.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private _componentData: ComponentDataService) { }
 
-  components: Component[];
+  constructor(private componentDataService: ComponentDataService) { }
+
+  // this exports the ComponentData to be used in HTML
+  componentsDataTS$: ComponentDataTS[];
   total = 0;
   page = 1;
   limit = 10;
   loading = false;
 
   ngOnInit() {
-    this.getComponents();
+    return this.getComponents();
   }
 
+
   getComponents(): void {
-    this._components.getComponents(this.page, this.limit)
+    this.componentDataService.getComponents(this.page, this.limit)
     .subscribe(res => {
-      this.components = res['page']['data'];
-      this.total = res['page']['data'];
-    })
+      this.componentsDataTS$ = res['page']['data'];
+      this.total = res['page'].total;
+      this.loading = false;
+    });
   }
 
   goToPrevious(): void {
-    console.log('Button prev works from child component');
     this.page--;
     this.getComponents();
   }
   goToNext(): void {
-    console.log('Button next works from child component');
     this.page++;
     this.getComponents();
   }

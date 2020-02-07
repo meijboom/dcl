@@ -1,52 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ComponentData } from '../../../assets/shared components/componentData';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { ComponentDataService } from 'src/services/component-data.service';
+import { ComponentDataTS } from 'src/models/component.model';
 
-const SAMPLE_DATA = [
-  { id: 1,
-    company: 'Eneco',
-    picture: 'e',
-    title: 'string',
-    category: 'string',
-    html_Content: 'string',
-    css_Content: 'string',
-    js_Content: 'string',
-    created_at: 'string',
-    updated_at: 'string',
-    user_id: 1},
-    { id: 2,
-      company: 'Eneco',
-      title: 'string',
-      picture: ' e',
-      category: 'string',
-      html_Content: 'string',
-      css_Content: 'string',
-      js_Content: 'string',
-      created_at: 'string',
-      updated_at: 'string',
-      user_id: 1},
-      { id: 2,
-        company: 'Eneco',
-        title: 'string',
-        picture: ' e',
-        category: 'string',
-        html_Content: 'string',
-        css_Content: 'string',
-        js_Content: 'string',
-        created_at: 'string',
-        updated_at: 'string',
-        user_id: 1},
-        { id: 2,
-          company: 'Eneco',
-          title: 'string',
-          picture: ' e',
-          category: 'string',
-          html_Content: 'string',
-          css_Content: 'string',
-          js_Content: 'string',
-          created_at: 'string',
-          updated_at: 'string',
-          user_id: 1}
-];
 
 @Component({
   selector: 'app-components',
@@ -55,9 +10,10 @@ const SAMPLE_DATA = [
 })
 export class ComponentsComponent implements OnInit {
 
+
+  @Input() components: any;
+
   constructor() { }
-  // this exports the ComponentData to be used in HTML
-  componentsData: ComponentData[] = SAMPLE_DATA;
 
   ngOnInit() {
   }

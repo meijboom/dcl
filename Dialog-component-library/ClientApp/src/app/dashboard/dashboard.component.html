@@ -1,21 +1,22 @@
 <main class="container-fluid content">
-    <div class="row">
-        <div class="col-3">
-            <app-sidebar></app-sidebar>
-        </div>
-        <div class="col-9">
-            <app-components></app-components>
-
-            <!-- listens to goPrev and executes the goToPrevious -->
-            <app-pagination
-                (goPage)="goToPage($event)"
-                (goPrev)="goToPrevious()"
-                (goNext)="goToNext()"
-                [page]="page"
-                [perPage]="limit"
-                [count]="total"
-                >
-            </app-pagination>
-        </div>
+  <div class="row">
+    <div class="col-3">
+      <app-sidebar></app-sidebar>
     </div>
+    <div class="col-9">
+
+      <app-components [components]="componentsDataTS$"></app-components>
+
+      <!-- listens to goPrev from Child compo and executes the goToPrevious in this compo -->
+      <!-- [inputchild]="exportparent"-->
+      <app-pagination 
+      (goPage)="goToPage($event)" 
+      (goPrev)="goToPrevious()" 
+      (goNext)="goToNext()" 
+      [page]="page"
+      [perPage]="limit" 
+      [count]="total">
+      </app-pagination>
+    </div>
+  </div>
 </main>

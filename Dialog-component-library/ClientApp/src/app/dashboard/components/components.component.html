@@ -1,11 +1,20 @@
 <main class="container">
   <div class="row justify-content-center">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2 text-center" 
-    *ngFor="let componentData of componentsData">
-
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 mt-2 text-center" *ngFor="let component of components">
+      <div class="card text-center">
+        <div class="card-header title">
+          photo of {{ component.title}}
+        </div>
+        <div class="card-body company">
+          <p> company: {{ component.company }} </p>
+        </div>
+        <button (click)="toggleRoute()" class="btn btn-primary action">
+          Show {{ component.title }}
+        </button>
+      </div>
       <!-- push componentData in app-videocompo and set it to videoCompo -->
-      <app-videocompo [videoCompo]="componentData"></app-videocompo>
-      
+      <!-- <app-videocompo [videoCompo]="component"></app-videocompo> -->
+
     </div>
   </div>
 </main>

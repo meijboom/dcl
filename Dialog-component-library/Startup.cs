@@ -23,19 +23,23 @@ namespace Dialog_component_library
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddCors(opt =>  {
-                opt.AddPolicy("CorsPolicy",
-                c => c.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-            })
+            services.AddCors(opt =>
+                {
+                    opt.AddPolicy("CorsPolicy",
+                        b => b.AllowAnyOrigin()
+                              .AllowAnyMethod()
+                              .AllowAnyHeader());
+                }
+            );
             _connectionString = Configuration["secretConnectionString"];
 
             // ADD AUTHENTICATION
-            services.AddAuthentication("CookieAuth")
-            .AddCookie("cookieAuth", config =>
-            {
-                config.Cookie.Name = "Dcl.Cookie";
-                config.LoginPath = "/Login";
-            });
+            // services.AddAuthentication("CookieAuth")
+            // .AddCookie("cookieAuth", config =>
+            // {
+            //     config.Cookie.Name = "Dcl.Cookie";
+            //     config.LoginPath = "/Login";
+            // });
             
             services.AddControllersWithViews();
 
@@ -55,10 +59,11 @@ namespace Dialog_component_library
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DataSeed seed)
         {
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseCors("CorsPolicy");
             }
             else
             {
@@ -66,10 +71,12 @@ namespace Dialog_component_library
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             seed.SeedData(100);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
@@ -78,9 +85,9 @@ namespace Dialog_component_library
             app.UseRouting();
 
             //  who are you?
-            app.UseAuthentication();
+            // app.UseAuthentication();
             //  are you allowed?
-            app.UseAuthorization();
+            // app.UseAuthorization();
 
 
             app.UseEndpoints(endpoints =>
