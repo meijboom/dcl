@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -19,13 +18,13 @@ import { PaginationComponent } from './dashboard/components/pagination/paginatio
 
 // Services
 import { ComponentDataService } from 'src/services/component-data.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
     FetchDataComponent,
     DashboardComponent,
     SidebarComponent,
@@ -41,10 +40,11 @@ import { ComponentDataService } from 'src/services/component-data.service';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'create-component', component: CreateComponentComponent },
+      { path: 'show-component', component: ShowComponentComponent },
       { path: 'dashboard', component: DashboardComponent },
-    ])
+    ]),
+    BrowserAnimationsModule
   ],
   providers: [
       ComponentDataService

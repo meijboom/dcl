@@ -12,9 +12,16 @@ export class ComponentDataService {
   getComponents(pageIndex: number, pageSize: number) {
 
     const apiUrl = 'https://localhost:5001/api/components/';
-    console.log(this._http.get<ComponentDataTS[]> (apiUrl + pageIndex + '/' + pageSize));
+    // console.log(this._http.get<ComponentDataTS[]> (apiUrl + pageIndex + '/' + pageSize));
     return this._http.get<ComponentDataTS[]> (apiUrl + pageIndex + '/' + pageSize);
     // .json(res => res.json());
+  }
+
+  getComponentsById(id: number) {
+
+    const apiUrl = 'https://localhost:5001/api/components/';
+    return this._http.get<ComponentDataTS[]> (apiUrl + id);
+      // .map(res => res.json());
   }
 
   getComponentsByUser(n: number) {
