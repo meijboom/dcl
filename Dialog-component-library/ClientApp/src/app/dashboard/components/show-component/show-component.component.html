@@ -1,60 +1,22 @@
-<mat-tab-group dynamicHeight>
-  <mat-tab label="Short tab">
-    <div class="example-small-box mat-elevation-z4">
-      Small content
-    </div>
-  </mat-tab>
-  <mat-tab label="Long tab">
-    <div class="example-large-box mat-elevation-z4">
-      Large content
-    </div>
-  </mat-tab>
-</mat-tab-group>
-
-
-
 <div class="container">
-  <div class="card col-12 m-1 mt-2 text-center">
-    <p class="picdemo">foto hier</p>
-    <ul class="nav nav-tabs" id="myTab">
-      <li class="nav-item">
-        <a class="nav-link active" id="html-tab" data-toggle="tab"
-          role="tab" aria-controls="html" aria-selected="true" target="_self">
-          HTML</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" id="css-tab" data-toggle="tab"
-          role="tab" aria-controls="css" aria-selected="false" target="_self">
-          CSS</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" id="js-tab" data-toggle="tab"
-          role="tab" aria-controls="js" aria-selected="false" target="_self">
-          JS</a>
-      </li>
-    </ul>
-
-    <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active" id="html" role="tabpanel"
-        aria-labelledby="html-tab">
-        <code>{{component$.htmlContent}}</code>
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="HTML">
+      <div class="example-large-box mat-elevation-z4">
+        {{component$.htmlContent}}
       </div>
-      <div class="tab-pane fade" id="css" role="tabpanel"
-        aria-labelledby="css-tab">
-        <code>{{component$.cssContent}}</code>
+    </mat-tab>
+    <mat-tab label="CSS">
+      <div class="example-large-box mat-elevation-z4">
+        {{component$.cssContent}}
       </div>
-      <div class="tab-pane fade" id="js" role="tabpanel"
-        aria-labelledby="js-tab">
-        <code> {{component$.jsContent } </code>
+    </mat-tab>
+    <mat-tab label="JS">
+      <div class="example-large-box mat-elevation-z4">
+        {{component$.jsContent}}
       </div>
-    </div>
-
-    <!-- @if(Auth::user()->id == $component->user_id) -->
-    <!-- <a href=" route('components.edit', $component->id)"> -->
-      <button class="btn btn-primary">Edit {{ component$.title }}</button>
-    <!-- </a> -->
-
-  </div>
+    </mat-tab>
+  </mat-tab-group>
+  <a [routerLink]="['edit']"><button mat-raised-button color="primary">Edit {{ component$.title }}</button></a>
 </div>
+
+

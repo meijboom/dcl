@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ComponentDataTS } from 'src/models/component.model';
 import { ComponentDataService } from 'src/services/component-data.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-show-component',
@@ -9,14 +10,13 @@ import { ComponentDataService } from 'src/services/component-data.service';
 })
 export class ShowComponentComponent implements OnInit {
 
-  constructor(private componentDataService: ComponentDataService)  { }
+  constructor(private route: ActivatedRoute, private componentDataService: ComponentDataService) { }
 
-  // this exports the ComponentData to be used in HTML
   component$: ComponentDataTS[];
-
-  id = 2;
+  id: number;
 
   ngOnInit() {
+    this.id = this.route.snapshot.params['id'];
     return this.getComponentsById();
   }
 

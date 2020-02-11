@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   constructor(private componentDataService: ComponentDataService) { }
 
   // this exports the ComponentData to be used in HTML
-  componentsDataTS$: ComponentDataTS[];
+  component$: ComponentDataTS[];
   total = 0;
   page = 1;
   limit = 10;
@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
   getComponents(): void {
     this.componentDataService.getComponents(this.page, this.limit)
     .subscribe(res => {
-      this.componentsDataTS$ = res['page']['data'];
+      this.component$ = res['page']['data'];
       this.total = res['page'].total;
       this.loading = false;
     });

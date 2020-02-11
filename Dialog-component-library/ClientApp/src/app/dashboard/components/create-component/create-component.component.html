@@ -1,58 +1,37 @@
 <!-- add snippets to the database -->
-  <div class="container">
-    <div class="row">
-        <form class="col-12" action="route('components.store')" method="POST">
-              <h4>Create a new component</h4>
-<!-- title -->
-              <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">
-                      Title</span>
-                  </div>
-                  <input type="text" name="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-<!-- category -->
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">
-                      Category</span>
-                  </div>
-                  <input type="text" name="category" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-<!-- Company -->
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">
-                      Company</span>
-                  </div>
-                  <input type="text" name="company" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-<!-- HTML txtarea -->
-                  <div class="input-group">   
-                      <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        HTML</span>
-                      </div>
-                      <textarea name="html_Content" class="form-control" aria-label="HTML snippet"></textarea>
-                  </div>
-<!-- CSS txtarea -->
-                  <div class="input-group">   
-                      <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        CSS</span>
-                      </div>
-                      <textarea name="css_Content" class="form-control" aria-label="HTML snippet"></textarea>
-                  </div>
-<!-- JS txtarea -->
-                  <div class="input-group">   
-                      <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        Javascript</span>
-                      </div>
-                      <textarea name="js_Content" class="form-control" aria-label="HTML snippet"></textarea>
-                  </div>
-              <Button class="btn btn-primary" type="submit">
-                Submit</Button>
-          </form>
-      </div>
-    </div>
+<div class="container">
+  <mat-form-field appearance="fill">
+    <mat-label>Titel</mat-label>
+    <input matInput required>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Category</mat-label>
+    <mat-select required>
+      <!-- foreach cat in categories -->
+      <mat-option value="option">Button</mat-option>
+      <mat-option value="option">Textblock</mat-option>
+      <mat-option value="option">Input Form</mat-option>
+      <mat-option value="option">Other</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Company</mat-label>
+    <input matInput required>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Paste HTML here.</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Paste CSS here.</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Paste JS here.</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary">Add Titel to Database</button>
+</div>
