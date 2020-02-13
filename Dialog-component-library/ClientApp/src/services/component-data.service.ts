@@ -9,7 +9,15 @@ export class ComponentDataService {
 
   constructor(private _http: HttpClient) { }
 
-  getComponents(pageIndex: number, pageSize: number) {
+  getAllComponents() {
+
+    const apiUrl = 'https://localhost:5001/api/components/';
+    // console.log(this._http.get<ComponentDataTS[]> (apiUrl + pageIndex + '/' + pageSize));
+    return this._http.get<ComponentDataTS[]> (apiUrl);
+    // .json(res => res.json());
+  }
+  
+  getPaginatedComponents(pageIndex: number, pageSize: number) {
 
     const apiUrl = 'https://localhost:5001/api/components/';
     // console.log(this._http.get<ComponentDataTS[]> (apiUrl + pageIndex + '/' + pageSize));

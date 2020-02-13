@@ -14,18 +14,23 @@ export class DashboardComponent implements OnInit {
 
   // this exports the ComponentData to be used in HTML
   component$: ComponentDataTS[];
+  allComponent$: ComponentDataTS[];
   total = 0;
   page = 1;
-  limit = 10;
+  limit = 8;
   loading = false;
 
   ngOnInit() {
-    return this.getComponents();
+    return this.initComponentVariables();
   }
 
+  initComponentVariables() {
+    this.getPaginatedComponents();
+    this.getAllComponents();
+  }
 
-  getComponents(): void {
-    this.componentDataService.getComponents(this.page, this.limit)
+  getPaginatedComponents(): void {
+    this.componentDataService.getPaginatedComponents(this.page, this.limit)
     .subscribe(res => {
       this.component$ = res['page']['data'];
       this.total = res['page'].total;
@@ -33,17 +38,24 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  getAllComponents(): void {
+    this.componentDataService.getAllComponents()
+    .subscribe(res => {
+      this.allComponent$ = res;
+    });
+  }
+
   goToPrevious(): void {
     this.page--;
-    this.getComponents();
+    this.getPaginatedComponents();
   }
   goToNext(): void {
     this.page++;
-    this.getComponents();
+    this.getPaginatedComponents();
   }
 
   goToPage(n: number): void {
     this.page = n;
-    this.getComponents();
+    this.getPaginatedComponents();
   }
 }

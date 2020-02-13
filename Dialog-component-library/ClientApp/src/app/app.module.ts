@@ -23,12 +23,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // MATERIAL
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatCardModule} from '@angular/material/card'; 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+
+// Pipes
+import { CategoryFilterPipe } from './dashboard/components/componentcategory-filter.pipe';
+import { CompanyFilterPipe } from './dashboard/components/componentcompany-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,9 @@ import {MatCardModule} from '@angular/material/card';
     CreateComponentComponent,
     ShowComponentComponent,
     EditComponentComponent,
-    PaginationComponent
+    PaginationComponent,
+    CategoryFilterPipe,
+    CompanyFilterPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

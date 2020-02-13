@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { ComponentDataService } from 'src/services/component-data.service';
 import { ComponentDataTS } from 'src/models/component.model';
 
 
@@ -10,12 +9,32 @@ import { ComponentDataTS } from 'src/models/component.model';
 })
 export class ComponentsComponent implements OnInit {
 
+  @Input() components: ComponentDataTS;
+  uniqueCompanies: any;
 
-  @Input() components: any;
-
+  searchTermCategory: string;
+  searchTermCompany: string;
   constructor() { }
 
   ngOnInit() {
+    console.log(this.components);
+    this.uniqueCompanies = this.getUniqCompanies(this.components);
   }
 
+
+  getUniqCompanies(components: any) {
+    const lookup = {};
+    const items = components;
+    const result = [];
+
+    for (let item, i = 0; item = items[i++];) {
+      const name = item.company;
+
+      if (!(name in lookup)) {
+        lookup[name] = 1;
+        result.push(name);
+      }
+    }
+    return result;
+  }
 }

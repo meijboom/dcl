@@ -1,11 +1,11 @@
 <main class="container-fluid content">
   <div class="row">
     <div class="col-3">
-      <app-sidebar></app-sidebar>
+      <app-sidebar [components]="allComponent$"></app-sidebar>
     </div>
     <div class="col-9">
 
-      <app-components [components]="component$"></app-components>
+      <app-components [components]="allComponent$"></app-components>
 
       <!-- listens to goPrev from Child compo and executes the goToPrevious in this compo -->
       <!-- [inputchild]="exportparent"-->
