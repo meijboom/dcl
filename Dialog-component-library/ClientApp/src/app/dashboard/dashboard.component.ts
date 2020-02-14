@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   allComponent$: ComponentDataTS[];
   total = 0;
   page = 1;
-  limit = 8;
+  limit = 12;
   loading = false;
 
   ngOnInit() {

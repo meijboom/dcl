@@ -1,14 +1,6 @@
 
-<mat-paginator 
-[length]="100"
-[pageSize]="10"
-[pageSizeOptions]="[5, 10, 25, 100]">
-</mat-paginator>
-
-
 <div class="pages">
-  <span class="page-counts">{{ getMin() }} through {{ getMax() }} of {{ count }} orders</span>
-  <span class="page-totals"> {{ totalPages() }} total pages</span>
+
   <div class="pagination" *ngIf="count > 0">
 
   <button mat-raised-button color="primary" 
@@ -29,4 +21,6 @@
   [disabled]="isLastPage() || loading" 
   [ngClass]="{ 'disabled': isLastPage() || loading }">Next Page</button>
   </div>
+  <span class="page-counts">{{ getMin() }} - {{ getMax() }} of {{ count }} Components --- </span>
+  <span class="page-totals"> {{ totalPages() }} total pages</span>
 </div>

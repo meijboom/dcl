@@ -1,9 +1,4 @@
 <div class="sidebar">
-    <h3 >Components</h3>
-    <ul *ngFor="let component of components" class="component-nav">
-        <li>{{ component.category }}</li>
-    </ul>
-  
     <ul class="companyswitcher">
         <h4> Active company </h4>
 
@@ -12,5 +7,9 @@
         <li> <a href="#" class="name">  Filter on Company   api/components/company/:id    </a></li>
         <li> <a href="#" class="name">  Company 2        </a></li>
         <li> <a href="#" class="name">  Company 3        </a></li>
+    </ul>
+    <h3 >Components</h3>
+    <ul *ngFor="let component of components" class="component-nav">
+        <li>{{ component.category }}</li>
     </ul>
   </div>

@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ComponentsComponent } from './dashboard/components/components.component';
@@ -29,17 +28,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
+import  {MatTableModule } from '@angular/material/table'; 
 
 // Pipes
 import { CategoryFilterPipe } from './dashboard/components/componentcategory-filter.pipe';
 import { CompanyFilterPipe } from './dashboard/components/componentcompany-filter.pipe';
+import { TableviewComponent } from './tableview/tableview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    FetchDataComponent,
     DashboardComponent,
     SidebarComponent,
     ComponentsComponent,
@@ -48,7 +48,8 @@ import { CompanyFilterPipe } from './dashboard/components/componentcompany-filte
     EditComponentComponent,
     PaginationComponent,
     CategoryFilterPipe,
-    CompanyFilterPipe
+    CompanyFilterPipe,
+    TableviewComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -59,7 +60,8 @@ import { CompanyFilterPipe } from './dashboard/components/componentcompany-filte
       { path: 'create-component', component: CreateComponentComponent },
       { path: 'show-component/:id/edit', component: EditComponentComponent },
       { path: 'show-component/:id', component: ShowComponentComponent },
-      { path: 'dashboard', component: DashboardComponent },
+      { path: 'dashboard/cards', component: DashboardComponent },
+      { path: 'dashboard/table', component: TableviewComponent },
     ]),
     BrowserAnimationsModule,
     // MATERIAL IMPORTS
@@ -72,7 +74,8 @@ import { CompanyFilterPipe } from './dashboard/components/componentcompany-filte
     MatInputModule,
     MatSelectModule,
     MatPaginatorModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule
   ],
   providers: [
       ComponentDataService

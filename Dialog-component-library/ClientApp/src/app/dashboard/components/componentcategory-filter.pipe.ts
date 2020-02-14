@@ -6,13 +6,21 @@ import { ComponentDataTS } from '../../../models/component.model';
 })
 
 export class CategoryFilterPipe implements PipeTransform {
-    transform(components: ComponentDataTS[], searchTermCategory: string): ComponentDataTS[] {
-        if (!components || !searchTermCategory) {
+    transform(components: ComponentDataTS[], searchTermCategory: string, searchTermCompany: string): ComponentDataTS[] {
+        if ((!components || !searchTermCompany) && (!components || !searchTermCategory)) {
             return components;
         }
 
-        return components.filter(component =>
-            component.category.toLowerCase()
-            .indexOf(searchTermCategory.toLowerCase()) !== -1 );
+        if (searchTermCategory){
+            return components.filter(component =>
+                component.category.toLowerCase()
+                    .indexOf(searchTermCategory.toLowerCase()) !== -1);
+        }
+
+        if (searchTermCompany) {
+            return components.filter(component =>
+                component.company.toLowerCase()
+                    .indexOf(searchTermCompany.toLowerCase()) !== -1);
+        }
     }
 }
