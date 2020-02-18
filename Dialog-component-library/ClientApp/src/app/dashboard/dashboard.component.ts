@@ -9,7 +9,6 @@ import { ComponentDataService } from 'src/services/component-data.service';
 })
 export class DashboardComponent implements OnInit {
 
-
   constructor(private componentDataService: ComponentDataService) { }
 
   // this exports the ComponentData to be used in HTML
@@ -42,6 +41,7 @@ export class DashboardComponent implements OnInit {
     this.componentDataService.getAllComponents()
     .subscribe(res => {
       this.allComponent$ = res;
+      console.log(res);
     });
   }
 

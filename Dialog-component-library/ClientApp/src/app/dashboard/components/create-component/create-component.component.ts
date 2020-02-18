@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ComponentDataService } from 'src/services/component-data.service';
+import { ComponentDataTS } from 'src/models/component.model';
+
+
 
 @Component({
   selector: 'app-create-component',
@@ -11,5 +16,10 @@ export class CreateComponentComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  // saveComponent(componentForm: NgForm): void {
+  //   this.
+
+  // }
 
 }
