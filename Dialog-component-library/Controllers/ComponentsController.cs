@@ -18,7 +18,7 @@ namespace Dialog_component_library.Controllers
         //GET api/components  
         // get all components
         [HttpGet]
-        public IActionResult GetAllComponents() 
+        public IActionResult GetAllComponents()
         {
             var data = _ctx.Components.OrderBy(c => c.Id);
 

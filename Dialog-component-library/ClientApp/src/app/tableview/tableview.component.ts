@@ -1,40 +1,42 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
+import { trigger, state, transition, style, animate } from '@angular/animations';
+
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+
 import { ComponentDataService } from 'src/services/component-data.service';
-import { IComponentData } from 'src/assets/shared components/componentData';
 import { ComponentDataTS } from 'src/models/component.model';
 
 @Component({
   selector: 'app-tableview',
   templateUrl: './tableview.component.html',
-  styleUrls: ['./tableview.component.css']
+  styleUrls: ['./tableview.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 
 export class TableviewComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'title', 'category', 'company'];
+  expandedElement: ComponentDataTS | null;
+  dataSource: MatTableDataSource<ComponentDataTS>;
 
-  public componentDataArray: ComponentDataTS[];
-  dataSource: MatTableDataSource<componentDataArray>;
 
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-  constructor(private componentDataService: ComponentDataService) {
-    // Create 100 users
-    // const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-    // const compos = this.componentDataArray;
 
-    // Assign the data to the data source for the table to render
-    // this.dataSource = new MatTableDataSource(compos);
-  }
+  constructor(private getComponentDataFromBackend: ComponentDataService) {}
 
   ngOnInit() {
     this.getAllComponents();
-    this.dataSource = new MatTableDataSource(this.componentDataArray);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -48,26 +50,13 @@ export class TableviewComponent implements OnInit {
     }
   }
 
-  getAllComponents(): void {
-    this.componentDataService.getAllComponents()
-    .subscribe(res => {
-      this.componentDataArray = res;
-      console.log(res);
-      console.log(this.componentDataArray);
+  getAllComponents() {
+    this.dataSource = new MatTableDataSource([]);
+    this.getComponentDataFromBackend.getAllComponents()
+    .subscribe(result => {
+      this.dataSource.data = [...result];
+      console.log(result);
+      console.log(this.dataSource.data);
     });
   }
 }
-
-/** Builds and returns a new User. */
-// function createNewUser(id: number): ComponentDataTS {
-//   const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-//       NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-//   return {
-//     id: id.toString(),
-//     name: name,
-//     progress: Math.round(Math.random() * 100).toString(),
-//     color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-//   };
-// }
-
