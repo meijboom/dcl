@@ -1,39 +1,42 @@
 <!-- add snippets to the database -->
 <div class="container">
-  <form (ngSubmit)="onSubmit()" #componentForm="ngForm">
+  <form [formGroup]="service.form" (ngSubmit)="onSubmit()" #componentForm="ngForm">
+    <input type="hidden" formControlName="id">
     <mat-form-field appearance="fill">
-      <mat-label>Titel</mat-label>
-      <input matInput required>
+      <mat-label>Title</mat-label>
+      <input formControlName="title" matInput required>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
       <mat-label>Category</mat-label>
-      <mat-select required>
-        <!-- foreach cat in categories -->
-        <mat-option value="option">Button</mat-option>
-        <mat-option value="option">Textblock</mat-option>
-        <mat-option value="option">Input Form</mat-option>
-        <mat-option value="option">Other</mat-option>
+      <mat-select formControlName="category" required>
+        <ng-container *ngFor="let category of uniqCategories">
+          <mat-option value="{{category}}"> {{category}} </mat-option>
+        </ng-container>
       </mat-select>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
       <mat-label>Company</mat-label>
-      <input matInput required>
+      <mat-select formControlName="company" required>
+        <ng-container *ngFor="let company of uniqCompanies">
+          <mat-option value="{{company}}"> {{company}} </mat-option>
+        </ng-container>
+      </mat-select>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
       <mat-label>Paste HTML here.</mat-label>
-      <textarea matInput></textarea>
+      <textarea matInput formControlName="html_Content"></textarea>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Paste CSS here.</mat-label>
-      <textarea matInput></textarea>
+      <textarea matInput formControlName="css_Content"></textarea>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Paste JS here.</mat-label>
-      <textarea matInput></textarea>
+      <textarea matInput formControlName="js_Content"></textarea>
     </mat-form-field>
-    <button (ngSubmit)="saveComponent()" mat-raised-button color="primary">Add Titel to Database</button>
+    <button (ngSubmit)="onSubmit()" mat-raised-button color="primary">Add to Database</button>
   </form>
 </div>
