@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ComponentDataService } from 'src/services/component-data.service';
 import { NotificationService } from 'src/services/notification.service';
 import { ComponentDataTS } from 'src/models/component.model';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create-component',
@@ -14,43 +15,24 @@ export class CreateComponentComponent implements OnInit {
 
   constructor(
     private service: ComponentDataService,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService) {
+    this.componentForm = this.service.createFormGroup();
+  }
+
   component$: ComponentDataTS[];
+  componentForm: FormGroup;
   uniqCategories;
   uniqCompanies;
+  uniqId;
 
   ngOnInit() {
     this.getAllComponents();
   }
 
-  onClear() {
-    this.service.form.reset();
-    this.service.initFormGroup();
-  }
-
-  onSubmit(form: NgForm) {
-    if (this.service.formData.CompId == 0)
-      this.postComponent(form);
-    else
-      this.updateComponent(form);
-  }
-
-  postComponents(form: NgForm) {
-    this.service.postComponent().subscribe(
-      res => {
-        debugger;
-        this.resetForm(form);
-        this.toastr.success('Submitted successfully', 'Payment Detail Register');
-        this.service.refreshList();
-      },
-      err => {
-        debugger;
-        console.log(err);
-      }
-    )
-  }
-  updateComponents(form: NgForm) {
-
+  onSubmit(ngForm: NgForm) {
+    console.log("ngForm");
+    console.log(ngForm.value);
+    this.service.postComponent(ngForm.value);
   }
 
   getAllComponents(): void {
@@ -60,12 +42,13 @@ export class CreateComponentComponent implements OnInit {
         console.log(res);
         this.getUniqueCategories(this.component$);
         this.getUniqueCompanies(this.component$);
+        this.getUniqueId(this.component$);
       });
   };
 
   getUniqueCategories(array: any) {
     const unique = [...new Set(array.map(item => item.category))];
-    console.log(unique)
+    console.log(unique);
     this.uniqCategories = unique;
   }
 
@@ -73,5 +56,18 @@ export class CreateComponentComponent implements OnInit {
     const unique = [...new Set(array.map(item => item.company))];
     console.log(unique)
     this.uniqCompanies = unique;
+  }
+  getUniqueId(array: any) {
+    let arrLength = array.length;
+    console.log(arrLength);
+    if (array[arrLength - 1] > arrLength) {
+      let newId = arrLength + 1;
+      console.log(newId);
+      return newId;
+    }
+
+
+
+
   }
 }

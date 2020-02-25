@@ -91,7 +91,8 @@ namespace Dialog_component_library.Controllers
             {
                 return BadRequest();
             }
-
+            System.Console.WriteLine(component);
+            System.Console.WriteLine("CREATED COMPONENT");
             _ctx.Components.Add(component);
             _ctx.SaveChanges();
 

@@ -1,6 +1,6 @@
 <!-- add snippets to the database -->
 <div class="container">
-  <form [formGroup]="service.form" (ngSubmit)="onSubmit()" #componentForm="ngForm">
+  <form [formGroup]="componentForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
     <input type="hidden" formControlName="id">
     <mat-form-field appearance="fill">
       <mat-label>Title</mat-label>
@@ -27,16 +27,17 @@
     <br>
     <mat-form-field appearance="fill">
       <mat-label>Paste HTML here.</mat-label>
-      <textarea matInput formControlName="html_Content"></textarea>
+      <textarea matInput formControlName="htmlContent"></textarea>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Paste CSS here.</mat-label>
-      <textarea matInput formControlName="css_Content"></textarea>
+      <textarea matInput formControlName="cssContent"></textarea>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Paste JS here.</mat-label>
-      <textarea matInput formControlName="js_Content"></textarea>
+      <textarea matInput formControlName="jsContent"></textarea>
     </mat-form-field>
-    <button (ngSubmit)="onSubmit()" mat-raised-button color="primary">Add to Database</button>
+    <input type="hidden" formControlName="userForeignKey">
+    <button mat-raised-button color="primary">Add to Database</button>
   </form>
 </div>
