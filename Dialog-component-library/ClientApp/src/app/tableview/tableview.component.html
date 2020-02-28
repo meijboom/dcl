@@ -14,26 +14,31 @@
       <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
       <ng-container matColumnDef="expandedDetail">
         <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-          <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-            <div class="example-element-diagram">
-              <div class="example-element-position"> Title: {{element.title}} </div>
-              <div class="example-element-name"> Category: {{element.category}} </div>
-              <div class="example-element-weight"> Id: {{element.id}} </div>
+          <div class="component-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <div class="component-element-picture">
+              <img mat-card-image src="https://misti.com/images/OS-Code-Main.jpg"
+                  alt="Photo of the Component">
             </div>
-            <div class="example-element-description">
-              <div class="example-element-symbol"> <img mat-card-image src="https://misti.com/images/OS-Code-Main.jpg" alt="Photo of the Component"> </div>
-              {{element.description}}
-              <span class="example-element-description-attribution"> -- Zaher </span>
+            <div class="component-element-diagram">
+              <div class="component-element-position"> Title: {{element.title}} </div>
+              <div class="component-element-name"> Category: {{element.category}} </div>
+              <div class="component-element-weight"> Id: {{element.id}} </div>
+              <div class="component-element-description"> Description: {{element.description}} </div>
+
             </div>
-            <div>
-              <button mat-button color="primary" [routerLink]="['/show-component', element.id]">SHOW</button>
+            <div class="componenent-element-buttons">
+              <button mat-raised-button color="primary" [routerLink]="['/show-component', element.id]">SHOW</button>
+              <br>
+              <button mat-raised-button color="accent" [routerLink]="['/show-component/', element.id, 'edit']">EDIT</button>
+              <br>
+              <button mat-raised-button color="warn" [routerLink]="['/show-component', element.id]">DELETE</button>
             </div>
           </div>
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="example-element-row"
+      <tr mat-row *matRowDef="let element; columns: displayedColumns;" class="component-element-row"
         [class.example-expanded-row]="expandedElement === element"
         (click)="expandedElement = expandedElement === element ? null : element">
       </tr>

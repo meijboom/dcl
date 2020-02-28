@@ -30,7 +30,7 @@ export class CreateComponentComponent implements OnInit {
   }
 
   onSubmit(ngForm: NgForm) {
-    console.log("ngForm");
+    console.log('ngForm');
     console.log(ngForm.value);
     this.service.postComponent(ngForm.value);
   }
@@ -65,9 +65,5 @@ export class CreateComponentComponent implements OnInit {
       console.log(newId);
       return newId;
     }
-
-
-
-
   }
 }

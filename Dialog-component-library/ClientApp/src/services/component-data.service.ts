@@ -14,6 +14,7 @@ export class ComponentDataService {
 
   // formcontrol
   createFormGroup() {
+    console.log("creating form")
     return new FormGroup ({
       id: new FormControl(null),
       picture: new FormControl(''),
@@ -23,7 +24,7 @@ export class ComponentDataService {
       htmlContent: new FormControl(''),
       cssContent: new FormControl(''),
       jsContent: new FormControl(''),
-      userForeignKey: new FormControl(87)
+      userForeignKey: new FormControl(87),
     });
   }
 
@@ -41,20 +42,6 @@ export class ComponentDataService {
 //     "userForeignKey": 1,
 //     "user": null
 // }
-
-  // initFormGroup() {
-  //   this.form.setValue({
-  //     id: null,
-  //     picture: '',
-  //     title: '',
-  //     category: '',
-  //     html_Content: '',
-  //     css_Content: '',
-  //     js_Content: '',
-  //     created_at: '',
-  //     updated_at: ''
-  //   });
-  // }
 
   // get requests
   getAllComponents() {
@@ -74,7 +61,8 @@ export class ComponentDataService {
   getComponentsById(id: number) {
 
     const apiUrl = 'https://localhost:5001/api/components/';
-
+    console.log(apiUrl + id);
+    console.log(this._http.get<ComponentDataTS[]>(apiUrl + id));
     return this._http.get<ComponentDataTS[]>(apiUrl + id);
   }
 

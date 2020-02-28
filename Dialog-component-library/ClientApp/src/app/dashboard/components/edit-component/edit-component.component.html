@@ -1,38 +1,52 @@
 <!-- add snippets to the database -->
 <div class="container">
-  <mat-form-field appearance="fill">
-    <mat-label>{{component$.title}}</mat-label>
-    <input matInput required>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Category</mat-label>
-    <mat-select required>
-      <!-- foreach cat in categories -->
-      <mat-option value="option">Button</mat-option>
-      <mat-option value="option">Textblock</mat-option>
-      <mat-option value="option">Input Form</mat-option>
-      <mat-option value="option">Other</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Company</mat-label>
-    <input matInput required>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Paste HTML here.</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Paste CSS here.</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Paste JS here.</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
-  <button mat-raised-button color="primary">Edit {{ component$.title }}</button>
-  <button mat-raised-button color="warn">Delete {{ component$.title }}</button>
+  <h1>EDIT COMPONENT</h1>
+  <form *ngIf="finishedLoadingData" [formGroup]="componentForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Id</mat-label>
+      <input type="number" value="{{compId}}" disabled matInput formControlName="id">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Title</mat-label>
+      <input formControlName="title" matInput required>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category" required>
+        <ng-container *ngFor="let category of uniqCategories">
+          <mat-option value="{{category}}"> {{category}} </mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Company</mat-label>
+      <mat-select formControlName="company" required>
+        <ng-container *ngFor="let company of uniqCompanies">
+          <mat-option value="{{company}}"> {{ company }} </mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Paste HTML here.</mat-label>
+      <textarea matInput formControlName="htmlContent"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Paste CSS here.</mat-label>
+      <textarea matInput formControlName="cssContent">
+        {{ thisComponent$.cssContent }}
+      </textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Paste JS here.</mat-label>
+      <textarea matInput formControlName="jsContent">
+        {{ thisComponent$.jsContent }}
+      </textarea>
+    </mat-form-field>
+    <input type="hidden" formControlName="userForeignKey">
+    <button mat-raised-button color="primary">Add to Database</button>
+  </form>
 </div>
