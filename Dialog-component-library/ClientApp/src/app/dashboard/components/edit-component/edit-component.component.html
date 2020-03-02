@@ -2,19 +2,15 @@
 <div class="container">
   <h1>EDIT COMPONENT</h1>
   <form *ngIf="finishedLoadingData" [formGroup]="componentForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <mat-form-field appearance="fill">
-      <mat-label>Id</mat-label>
-      <input type="number" value="{{compId}}" disabled matInput formControlName="id">
-    </mat-form-field>
-
+    <input type="hidden" [(ngModel)]="compId" disabled required formControlName="id">
     <mat-form-field appearance="fill">
       <mat-label>Title</mat-label>
-      <input formControlName="title" matInput required>
+      <input formControlName="title" [(ngModel)]="thisComponent$.title"  matInput required>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
       <mat-label>Category</mat-label>
-      <mat-select formControlName="category" required>
+      <mat-select formControlName="category" [(ngModel)]="thisComponent$.category" required>
         <ng-container *ngFor="let category of uniqCategories">
           <mat-option value="{{category}}"> {{category}} </mat-option>
         </ng-container>
@@ -23,7 +19,7 @@
     <br>
     <mat-form-field appearance="fill">
       <mat-label>Company</mat-label>
-      <mat-select formControlName="company" required>
+      <mat-select formControlName="company" [(ngModel)]="thisComponent$.company" required>
         <ng-container *ngFor="let company of uniqCompanies">
           <mat-option value="{{company}}"> {{ company }} </mat-option>
         </ng-container>
@@ -32,21 +28,17 @@
     <br>
     <mat-form-field appearance="fill">
       <mat-label>Paste HTML here.</mat-label>
-      <textarea matInput formControlName="htmlContent"></textarea>
+      <textarea matInput formControlName="htmlContent" [(ngModel)]="thisComponent$.htmlContent"></textarea>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Paste CSS here.</mat-label>
-      <textarea matInput formControlName="cssContent">
-        {{ thisComponent$.cssContent }}
-      </textarea>
+      <textarea matInput formControlName="cssContent" [(ngModel)]="thisComponent$.cssContent"></textarea>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Paste JS here.</mat-label>
-      <textarea matInput formControlName="jsContent">
-        {{ thisComponent$.jsContent }}
-      </textarea>
+      <textarea matInput formControlName="jsContent" [(ngModel)]="thisComponent$.jsContent"></textarea>
     </mat-form-field>
     <input type="hidden" formControlName="userForeignKey">
-    <button mat-raised-button color="primary">Add to Database</button>
+    <button mat-raised-button color="primary">Edit</button>
   </form>
 </div>

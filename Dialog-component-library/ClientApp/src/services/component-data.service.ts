@@ -89,10 +89,17 @@ export class ComponentDataService {
   }
 
   // put
-  updateComponent(component: ComponentDataTS) {
+  updateComponent(component: ComponentDataTS, id: number) {
     const apiUrl = 'https://localhost:5001/api/components/';
+    const API_URL = `${apiUrl}${id}`;
+    console.log(API_URL);
+    console.log('INSIDE SERVICE');
+    console.log(component);
+    console.log(typeof (component));
 
-    return this._http.put<ComponentDataTS>(apiUrl, component);
+    return this._http.put<ComponentDataTS>(API_URL, component).subscribe( res => {
+      console.log(res);
+    });
     // return console.log("Component succesfully updated.");
   }
 

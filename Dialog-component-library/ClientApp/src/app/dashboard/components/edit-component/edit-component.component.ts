@@ -53,7 +53,7 @@ export class EditComponentComponent implements OnInit {
   onSubmit(ngForm: NgForm) {
     console.log('ngForm');
     console.log(ngForm.value);
-    // this.service.updateComponent(ngForm.value);
+    this.service.updateComponent(ngForm.value, ngForm.value.id);
   }
 
   getAllComponents(): void {
