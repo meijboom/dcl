@@ -2,7 +2,7 @@
 <div class="container">
   <h1>EDIT COMPONENT</h1>
   <form *ngIf="finishedLoadingData" [formGroup]="componentForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <input type="hidden" [(ngModel)]="compId" disabled required formControlName="id">
+    <input type="hidden" [(ngModel)]="compId" formControlName="id">
     <mat-form-field appearance="fill">
       <mat-label>Title</mat-label>
       <input formControlName="title" [(ngModel)]="thisComponent$.title"  matInput required>
@@ -39,6 +39,8 @@
       <textarea matInput formControlName="jsContent" [(ngModel)]="thisComponent$.jsContent"></textarea>
     </mat-form-field>
     <input type="hidden" formControlName="userForeignKey">
-    <button mat-raised-button color="primary">Edit</button>
+    <button class="btns edit-btn" mat-raised-button color="primary">Edit</button>
   </form>
+  <!-- show modal with ARE YOU SURE TO DELETE? -->
+  <button (click)="deleteComponent()" class="btns delete-btn" mat-raised-button color="warn">Delete</button>
 </div>

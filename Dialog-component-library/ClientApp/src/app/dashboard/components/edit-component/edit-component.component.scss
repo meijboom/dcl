@@ -1,6 +1,13 @@
 mat-form-field {
-    width: 100%;
-    textarea {
-        height: 150px;
-    }
+  width: 100%;
+
+  textarea {
+    height: 150px;
+  }
+}
+
+.edit-btn, 
+.delete-btn {
+  width: 100%;
+  margin-top: 20px;
 }

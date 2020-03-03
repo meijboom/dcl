@@ -123,13 +123,13 @@ namespace Dialog_component_library.Controllers
             updatedComponent.HtmlContent = Component.HtmlContent;
             updatedComponent.CssContent = Component.CssContent;
             updatedComponent.JsContent = Component.JsContent;
-            updatedComponent.updated_at = Component.updated_at;
+            updatedComponent.updated_at = DateTime.Now;
             
             _ctx.SaveChanges();
             return new NoContentResult();
         }
 
-        // DELETE api/order/5
+        // DELETE api/Component/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

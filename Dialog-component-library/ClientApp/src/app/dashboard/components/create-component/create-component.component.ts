@@ -21,9 +21,10 @@ export class CreateComponentComponent implements OnInit {
 
   component$: ComponentDataTS[];
   componentForm: FormGroup;
+
   uniqCategories;
   uniqCompanies;
-  uniqId;
+  private uniqId;
 
   ngOnInit() {
     this.getAllComponents();
@@ -44,7 +45,7 @@ export class CreateComponentComponent implements OnInit {
         this.getUniqueCompanies(this.component$);
         this.getUniqueId(this.component$);
       });
-  };
+  }
 
   getUniqueCategories(array: any) {
     const unique = [...new Set(array.map(item => item.category))];
@@ -54,16 +55,13 @@ export class CreateComponentComponent implements OnInit {
 
   getUniqueCompanies(array: any) {
     const unique = [...new Set(array.map(item => item.company))];
-    console.log(unique)
+    console.log(unique);
     this.uniqCompanies = unique;
   }
-  getUniqueId(array: any) {
-    let arrLength = array.length;
-    console.log(arrLength);
-    if (array[arrLength - 1] > arrLength) {
-      let newId = arrLength + 1;
-      console.log(newId);
-      return newId;
-    }
+  getUniqueId(array: any): void {
+    const unique = [...new Set(array.map(item => item.id))];
+    const sortedArr = unique.sort((a: number, b: number ) => a - b);
+    const highestID = sortedArr[sortedArr.length - 1];
+    this.uniqId = highestID + 1;
   }
 }

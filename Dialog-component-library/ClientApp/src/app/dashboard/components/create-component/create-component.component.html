@@ -1,7 +1,9 @@
 <!-- add snippets to the database -->
 <div class="container">
+  <h1>Create Component</h1>
+  <h1>{{uniqId}}</h1>
   <form [formGroup]="componentForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <input type="hidden" formControlName="id">
+    <input type="hidden" [(ngModel)]="uniqId" formControlName="id">
     <mat-form-field appearance="fill">
       <mat-label>Title</mat-label>
       <input formControlName="title" matInput required>

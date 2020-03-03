@@ -1,6 +1,6 @@
 export class ComponentDataTS {
 
-    id: number;
+    id: Number;
     picture: string;
     title: string;
     company: string;
@@ -10,5 +10,5 @@ export class ComponentDataTS {
     js_Content: string;
     created_at: string;
     updated_at: string;
-    user_id: number;
+    user_id: Number;
 }
