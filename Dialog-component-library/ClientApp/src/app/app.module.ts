@@ -28,12 +28,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
-import {MatTableModule } from '@angular/material/table';
-import {MatSnackBarModule} from '@angular/material/snack-bar';  
+import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // Pipes
 import { CategoryFilterPipe } from './dashboard/components/componentcategory-filter.pipe';
-import { CompanyFilterPipe } from './dashboard/components/componentcompany-filter.pipe';
 import { TableviewComponent } from './tableview/tableview.component';
 
 @NgModule({
@@ -49,7 +49,6 @@ import { TableviewComponent } from './tableview/tableview.component';
     EditComponentComponent,
     PaginationComponent,
     CategoryFilterPipe,
-    CompanyFilterPipe,
     TableviewComponent
   ],
   imports: [
@@ -77,7 +76,8 @@ import { TableviewComponent } from './tableview/tableview.component';
     MatPaginatorModule,
     MatCardModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [
       ComponentDataService

@@ -62,6 +62,6 @@ export class CreateComponentComponent implements OnInit {
     const unique = [...new Set(array.map(item => item.id))];
     const sortedArr = unique.sort((a: number, b: number ) => a - b);
     const highestID = sortedArr[sortedArr.length - 1];
-    this.uniqId = highestID + 1;
+    this.uniqId = +highestID + 1;
   }
 }
