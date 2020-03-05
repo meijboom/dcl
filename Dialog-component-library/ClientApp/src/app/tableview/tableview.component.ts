@@ -48,17 +48,17 @@ export class TableviewComponent implements OnInit {
   animal: string;
   name: string;
   
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
-    });
+  // openDialog(): void {
+  //   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+  //     width: '250px',
+  //     data: {name: this.name, animal: this.animal}
+  //   });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //     this.animal = result;
+  //   });
+  // }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
